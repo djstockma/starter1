@@ -1,0 +1,20 @@
+<h1> Shared shopping lists </h1>
+<a href="/" >Main page</a>
+
+<h2> Add a new List </h2>
+
+<form method="POST" action="/lists">
+  Name: <input type="text" name="name" />
+  <input type="submit" value="Add list" />
+</form>
+
+<ul>
+<% it.lists.forEach((list) => { %>
+  <li>
+        <a href="/lists/<%= list.id %>"> <%= list.name %> </a>      
+        <form method="POST" action="/lists/<%= list.id %>/deactivate">
+            <input type="submit" value="Deactivate list!" />
+        </form>
+  </li>
+<% }); %>
+</ul>
